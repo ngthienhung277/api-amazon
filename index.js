@@ -18,9 +18,9 @@ app.get("/", async (req, res) => {
 //get product details
 app.get("/products/:productId", async (req, res) => {
     const { productId } = req.params;
-    const { apiKey } = req.query;
+    const { api_key } = req.query;
     try {
-        const response = await request(`${returnScraperApiUrl(apiKey)}&url=https://www.amazon.com/dp/${productId}`);
+        const response = await request(`${returnScraperApiUrl(api_key)}&url=https://www.amazon.com/dp/${productId}`);
         res.json(JSON.parse(response));
     } catch (error) {
         res.json({ error: error.message });
@@ -30,10 +30,10 @@ app.get("/products/:productId", async (req, res) => {
 //get product reviews
 app.get("/products/:productId/reviews", async (req, res) => {
     const { productId } = req.params;
-    const { apiKey } = req.query;
+    const { api_key } = req.query;
 
     try {
-        const response = await request(`${returnScraperApiUrl(apiKey)}&url=https://www.amazon.com/product-reviews/${productId}`);
+        const response = await request(`${returnScraperApiUrl(api_key)}&url=https://www.amazon.com/product-reviews/${productId}`);
 
         res.json(JSON.parse(response));
     } catch (error) {
@@ -44,11 +44,11 @@ app.get("/products/:productId/reviews", async (req, res) => {
 //get product offers
 app.get("/products/:productId/offers", async (req, res) => {
     const { productId } = req.params;
-    const { apiKey } = req.query;
+    const { api_key } = req.query;
 
     try {
-        const response = await request(`${returnScraperApiUrl(apiKey)}&url=https://www.amazon.com/gp/offer-listing/${productId}`);
-        
+        const response = await request(`${returnScraperApiUrl(api_key)}&url=https://www.amazon.com/gp/offer-listing/${productId}`);
+
         res.json(JSON.parse(response));
     } catch (error) {
         res.json({ error: error.message });
@@ -58,9 +58,9 @@ app.get("/products/:productId/offers", async (req, res) => {
 //get search results
 app.get("/search/:searchQuery", async (req, res) => {
     const { searchQuery } = req.params;
-    const { apiKey } = req.query;
+    const { api_key } = req.query;
     try {
-        const response = await request(`${returnScraperApiUrl(apiKey)}&url=https://www.amazon.com/s?k=${searchQuery}`);
+        const response = await request(`${returnScraperApiUrl(api_key)}&url=https://www.amazon.com/s?k=${searchQuery}`);
         res.json(JSON.parse(response));
     } catch (error) {
         res.json({ error: error.message });
@@ -69,10 +69,10 @@ app.get("/search/:searchQuery", async (req, res) => {
 
 //get deals
 app.get("/deals", async (req, res) => {
-    const { apiKey } = req.query;
+    const { api_key } = req.query;
 
     try {
-        const response = await request(`${returnScraperApiUrl(apiKey)}&url=https://www.amazon.com/gp/goldbox?ref_=nav_cs_gb`);
+        const response = await request(`${returnScraperApiUrl(api_key)}&url=https://www.amazon.com/gp/goldbox?ref_=nav_cs_gb`);
         res.json(JSON.parse(response));
     } catch (error) {
         res.json({ error: error.message });
